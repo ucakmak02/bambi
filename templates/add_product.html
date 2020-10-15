@@ -1,0 +1,477 @@
+
+  
+  
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Zazaoglu</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="icon" type="image/gif/png" href="images/favicon.png">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+      <link rel="icon" type="image/gif/png" href="static/images/favicon.png">
+      <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
+      <link rel="stylesheet" href="static/css/animate.css">
+      
+      <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="static/css/magnific-popup.css">
+  
+      <link rel="stylesheet" href="static/css/aos.css">
+  
+      <link rel="stylesheet" href="static/css/ionicons.min.css">
+  
+      <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
+      <link rel="stylesheet" href="static/css/jquery.timepicker.css">
+  
+      
+      <link rel="stylesheet" href="static/css/flaticon.css">
+      <link rel="stylesheet" href="static/css/icomoon.css">
+      <link rel="stylesheet" href="static/css/style.css">
+      <link rel="stylesheet" href="static/css/dropzone.css">
+  
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+      
+      
+    </head>
+    <body>
+      <div class="overlayera">
+        <video id="myVideo" src="static/videos/Waves - 5121.mp4" autoplay="true" loop muted playsinline></video>
+        <img src="static/images/background.png" id="myResim" style="position: relative;">
+      </div>
+  
+      <div class="KW_progressContainer">
+        <div class="KW_progressBar">
+  
+        </div>
+      </div>
+      <div class="page">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" style="width:100%">
+          <button class="navbar-toggler btn btn-outline-info col-md-12" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" >
+            <span class="navbar-toggler-icon"></span>
+      
+          </button>
+          <div class="container" >
+            <div class="collapse navbar-collapse " id="navbarsExampleDefault">
+              <ul class="navbar-nav ml-auto" align="center">
+                
+                {% if session.logged_in %}
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">
+                      <i class="fas fa-sign-out-alt"></i> Çıkış
+                  </a>
+              </li>
+              {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+      
+      <div id="colorlib-page">
+        <header>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="colorlib-navbar-brand">
+                  <a class="colorlib-logo" href="/"><span class="logo-img" style="background-image: url(static/images/ceyiz_logo.jpg);"></span><p style="color:#ff6666">ZAZAOĞLU ÇEYİZ</p></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section class="ftco-section about-section" id="about">
+        
+          <div class="container">
+                <form id="upload-form" method="POST" action="/urun_ekle" enctype="multipart/form-data" novalidate="" accept="images/*">
+            <h1 class="bold-text">Ürün Ekleme</h1>
+            <div class="row d-flex" data-scrollax-parent="true">
+              <div class="col-md-3 author-img" data-scrollax=" properties: { translateY: '-70%'}" align="center">
+                <h2 class="bold-text">Ürün Ana Fotoğraf Ekle</h2>
+                
+                <div class="box has-advanced-upload">
+                        <input id="action" type="text" value="add" class="form-control d-none" name="action">
+                        <div class="box__input">
+                            <p for="fileLater" id="upload-cloud" style="font-size: 100px;" class="text-center">
+                                <i class="fas fa-cloud-upload-alt text-primary"></i>
+                            </p>
+                            <div id="upload-highstone" class="row justify-content-center" style="display: none;">
+                                <div class="col-4"></div>
+                                <div class="col-4"></div>
+                                <div class="progress col-6 mt-3 p-0">
+                                    <div class="upload-bar text-center">
+                                        <strong class="upload-percent" style="font-size: 10px;">0%</strong>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <input type="file" name="files_main[]" accept='image/*' id="fileLater" class="box__file d-none" data-multiple-caption="{count} files selected" multiple="">
+                            <label for="fileLater" class="col-12 text-center" style="cursor: pointer;">
+
+                                <strong>Resim Seç</strong>
+                                <span class="box__dragndrop"> yada buraya sürükleyip bırakın</span>.
+                            </label>
+
+                        </div>
+                        <div class="box__uploading">Yükleniyor...</div>
+                        <div class="box__success">Yüklendi! </div>
+                        <div class="box__error">Hata! <span></span></div>
+                    </div>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-6">
+                <div class="about-desc">
+                  
+                  <div class="p-5">
+                    
+
+                    
+                        <h2 class="bold-text">Ürün Bilgileri</h2>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Ürün Adı  :</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default" >Ürün Modeli:</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" style="color: black" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Ürün Rengi:</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="inputGroup-sizing-default">Ürün Fiyatı:</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">Açıklama   :</span>
+                                </div>
+                                <textarea class="form-control" name="aciklama" aria-label="With textarea"></textarea>
+                        </div>
+                        
+          
+                    
+                </div>
+                <div align="center">
+                    <div style="width: 33%">{% include 'includes/_messages.html' %}</div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+          <div align="center">
+          <h2 class="bold-text">Ürünün Diğer Fotoğraflarını Ekle</h2>
+                
+          <div class="box has-advanced-upload">
+                  <input id="action" type="text" value="add" class="form-control d-none" name="action">
+                  <div class="box__input">
+                      <p for="fileLater" id="upload-cloud" style="font-size: 100px;" class="text-center">
+                          <i class="fas fa-cloud-upload-alt text-primary"></i>
+                      </p>
+                      <div id="upload-highstone" class="row justify-content-center" style="display: none;">
+                          <div class="col-4"></div>
+                          <div class="col-4"></div>
+                          <div class="progress col-6 mt-3 p-0">
+                              <div class="upload-bar text-center">
+                                  <strong class="upload-percent" style="font-size: 10px;">0%</strong>
+                              </div>
+
+                          </div>
+                      </div>
+                      <input type="file" name="files[]" accept='image/*' id="fileLater" class="box__file d-none" data-multiple-caption="{count} files selected" multiple="">
+                      <label for="fileLater" class="col-12 text-center" style="cursor: pointer;">
+
+                          <strong>Resimleri Seçin</strong>
+                          <span class="box__dragndrop"> yada buraya sürükleyip bırakın</span>.
+                      </label>
+
+                  </div>
+                  <div class="box__uploading">Yükleniyor...</div>
+                  <div class="box__success">Yüklendi! </div>
+                  <div class="box__error">Hata! <span></span></div>
+              </div>
+            </div>
+        </div>
+        <div style="height: 40px"></div>
+        <button style="width: 200px; margin:0 auto;" class="btn btn-primary btn-block" type="submit" value="Save">Kaydet</button>
+
+        </form>
+    </div>
+        </section>
+    
+        <footer class=" ftco-section" id="contact">
+          <div class="container">
+            <div class="row mb-5 justify-content-center">
+              <div class="col-md-10 text-center">
+                <div class="ftco-footer-widget mb-5">
+                  <ul class="ftco-footer-social list-unstyled">
+                    <li class="ftco-animate"><a target="_blank" href="https://twitter.com/HighStone8"><span class="icon-twitter"></span></a></li>
+                    <li class="ftco-animate"><a target="_blank" href="https://www.facebook.com/highstone.highstone.77"><span class="icon-facebook"></span></a></li>
+                    <li class="ftco-animate"><a target="_blank" href="https://www.instagram.com/highstonecorp/?hl=tr"><span class="icon-instagram"></span></a></li>
+                  </ul>
+                </div>
+                <div class="ftco-footer-widget">
+                  <h2 class="mb-3">İletişim</h2>
+                  <p class="h3 email"><a href="contact.html">zazaogluceyiz@gmail.com</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+  
+                <p>Copyright ©2019 FreeWings Inc.</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+  
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  
+        </div>
+  
+      </div>
+  
+  
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="static/js/popper.min.js"></script>
+      <script src="static/js/bootstrap.min.js"></script>
+      <script src="static/js/jquery.easing.1.3.js"></script>
+      <script src="static/js/jquery.waypoints.min.js"></script>
+      <script src="static/js/jquery.stellar.min.js"></script>
+      <script src="static/js/owl.carousel.min.js"></script>
+      <script src="static/js/jquery.magnific-popup.min.js"></script>
+      <script src="static/js/aos.js"></script>
+      <script src="static/js/jquery.animateNumber.min.js"></script>
+      <script src="static/js/scrollax.min.js"></script>
+      <script src="static/js/bootstrap-datepicker.js"></script>
+      <script src="static/js/jquery.timepicker.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="static/js/google-map.js"></script>
+      <script src="static/js/main.js"></script>
+      <style>
+        p{
+          color: black;
+          font-size:20px
+        }
+        h1{
+            color:rgb(46, 46, 46)
+        }
+        h2{
+            font-size: 30px;
+            color:rgb(46, 46, 46)
+        }
+        span{
+          color: black
+        }
+        b{
+          font-size:18px;
+          color: black;
+          font-style: oblique;
+        }
+        a{
+          font-size:20px;
+          color: black;
+  
+        }
+        .navContainer{
+          background-color: rgba(255, 255, 255, 0.07);
+        }
+      </style>
+      <script>
+(function(document, window, index) {
+    // feature detection for drag&drop upload
+    var isAdvancedUpload = function() {
+        var div = document.createElement('div');
+        return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+    }();
+
+
+    // applying the effect for every form
+    var forms = document.querySelectorAll('.box');
+    Array.prototype.forEach.call(forms, function(form) {
+        var input = form.querySelector('input[type="file"]'),
+            label = form.querySelector('label'),
+            errorMsg = form.querySelector('.box__error span'),
+            restart = form.querySelectorAll('.box__restart'),
+            droppedFiles = false,
+            showFiles = function(files) {
+                label.textContent = files.length > 1 ? (input.getAttribute('data-multiple-caption') || '').replace('{count}', files.length) : files[0].name;
+            },
+            triggerFormSubmit = function() {
+                var event = document.createEvent('HTMLEvents');
+                event.initEvent('submit', true, false);
+                form.dispatchEvent(event);
+            };
+
+        // letting the server side to know we are going to make an Ajax request
+        var ajaxFlag = document.createElement('input');
+        ajaxFlag.setAttribute('type', 'hidden');
+        ajaxFlag.setAttribute('name', 'ajax');
+        ajaxFlag.setAttribute('value', 1);
+        form.appendChild(ajaxFlag);
+
+        // automatically submit the form on file select
+        input.addEventListener('change', function(e) {
+            showFiles(e.target.files);
+        });
+
+        // drag&drop files if the feature is available
+        if (isAdvancedUpload) {
+            form.classList.add('has-advanced-upload'); // letting the CSS part to know drag&drop is supported by the browser
+
+            ['drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop'].forEach(function(event) {
+                form.addEventListener(event, function(e) {
+                    // preventing the unwanted behaviours
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            ['dragover', 'dragenter'].forEach(function(event) {
+                form.addEventListener(event, function() {
+                    form.classList.add('is-dragover');
+                });
+            });
+            ['dragleave', 'dragend', 'drop'].forEach(function(event) {
+                form.addEventListener(event, function() {
+                    form.classList.remove('is-dragover');
+                });
+            });
+            form.addEventListener('drop', function(e) {
+                droppedFiles = e.dataTransfer.files; // the files that were dropped
+                input.files = droppedFiles;
+                showFiles(droppedFiles);
+            });
+        }
+
+
+        // if the form was submitted
+        form.addEventListener('submit', function(e) {
+            // preventing the duplicate submissions if the current one is in progress
+            if (form.classList.contains('is-uploading')) return false;
+
+            form.classList.add('is-uploading');
+            form.classList.remove('is-error');
+
+            if (isAdvancedUpload) // ajax file upload for modern browsers
+            {
+                e.preventDefault();
+
+                // gathering the form data
+                var ajaxData = new FormData(form);
+                if (droppedFiles) {
+                    Array.prototype.forEach.call(droppedFiles, function(file) {
+                        ajaxData.append(input.getAttribute('name'), file);
+                    });
+                }
+
+                // ajax request
+                var ajax = new XMLHttpRequest();
+                ajax.open(form.getAttribute('method'), form.getAttribute('action'), true);
+
+                ajax.onload = function() {
+                    form.classList.remove('is-uploading');
+                    if (ajax.status >= 200 && ajax.status < 400) {
+                        var data = JSON.parse(ajax.responseText);
+                        form.classList.add(data.success == true ? 'is-success' : 'is-error');
+                        if (!data.success) errorMsg.textContent = data.error;
+                    } else alert('Error. Please, contact the webmaster!');
+                };
+
+                ajax.onerror = function() {
+                    form.classList.remove('is-uploading');
+                    alert('Error. Please, try again!');
+                };
+
+                ajax.send(ajaxData);
+            } else // fallback Ajax solution upload for older browsers
+            {
+                var iframeName = 'uploadiframe' + new Date().getTime(),
+                    iframe = document.createElement('iframe');
+
+                $iframe = $('<iframe name="' + iframeName + '" style="display: none;"></iframe>');
+
+                iframe.setAttribute('name', iframeName);
+                iframe.style.display = 'none';
+
+                document.body.appendChild(iframe);
+                form.setAttribute('target', iframeName);
+
+                iframe.addEventListener('load', function() {
+                    var data = JSON.parse(iframe.contentDocument.body.innerHTML);
+                    form.classList.remove('is-uploading')
+                    form.classList.add(data.success == true ? 'is-success' : 'is-error')
+                    form.removeAttribute('target');
+                    if (!data.success) errorMsg.textContent = data.error;
+                    iframe.parentNode.removeChild(iframe);
+                });
+            }
+        });
+
+
+        // restart the form if has a state of error/success
+        Array.prototype.forEach.call(restart, function(entry) {
+            entry.addEventListener('click', function(e) {
+                e.preventDefault();
+                form.classList.remove('is-error', 'is-success');
+                input.click();
+            });
+        });
+
+        // Firefox focus bug fix for file input
+        input.addEventListener('focus', function() {
+            input.classList.add('has-focus');
+        });
+        input.addEventListener('blur', function() {
+            input.classList.remove('has-focus');
+        });
+
+    });
+}(document, window, 0));
+
+
+// Uploading bar
+$(function() {
+    var bar = $('.upload-bar');
+    var percent = $('.upload-percent');
+    var status = $('#upload-status');
+    $('#upload-form').ajaxForm({
+        beforeSend: function() {
+            $("#upload-cloud").fadeOut("slow", function() {
+                $("#upload-highstone").fadeIn("slow")
+            });
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal);
+            if (percentComplete >= 100) {
+                percent.html("Completing...");
+            } else {
+                percent.html(percentVal);
+            }
+        },
+        complete: function(xhr) {
+            location.reload()
+        }
+    });
+});
+      </script>
+      
+    </body>
+  </html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bambi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/gif/png" href="../static/logo/bambi_logo_dark.png">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
+    
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../static/css/aos.css">
+
+    <link rel="stylesheet" href="../static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="../static/css/flaticon.css">
+    <link rel="stylesheet" href="../static/css/icomoon.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+  </head>
+  <body style="background-color: whitesmoke;">
+    <div class="page">  
+
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/" style="font-size:1.1em; color:white">
+          <img src="../static/logo/bambi_logo_light.png" style='width: 105px;' alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/" style="font-size:1.1em; color:white;margin-left: 20px;"><span class="sr-only">(current)</span>Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#products" style="font-size:1.1em; color:white;margin-left: 20px;">Products</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#contact" style="font-size:1.1em; color:white;margin-left: 20px;">Contact</a>
+            </li>
+            {% if session.logged_in %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout" style="font-size:1.1em; color:white">
+                  <i class="fas fa-sign-out-alt"></i> Cıkıs
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <span class="navbar-text">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 7px;">
+                  <button  type="button" name='sm' class="btn btn-secondary imageSize">Sm</button>
+                  <button  type="button" name='md' class="btn btn-secondary imageSize">Md</button>
+                  <button  type="button" name='lg' class="btn btn-secondary imageSize">L</button>
+                </div>
+              </li>
+              
+              <li class="nav-item active">
+                <a class="nav-link"  target="_blank" href="https://www.facebook.com/pages/category/Furniture/Bambi-Literie-Meuble-699120597206137/" >
+                  <img src="../static/icons/facebook.png" style='width: 25px;height:25px;margin-left: 15px;' alt="">
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" target="_blank" href="https://www.instagram.com/bambiliterie/" >
+                  <img src="../static/icons/instagram.png" style='width: 27px;height:27px;margin-left: 15px;' alt="">
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" target="_blank" href="tel:+33762586432" >
+                  <img src="../static/icons/mobile.png" style='width: 27px;height:27px;margin-left: 15px;' alt="">
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="https://goo.gl/maps/Z9SHekveQZ6Pqa33A" target="_blank">
+                  <img src="../static/icons/location.jpg" style='width: 32px;height:27px;margin-left: 15px;' alt="">
+                </a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </nav>
+
+      <section class="home-slider owl-carousel js-fullheight" id ="start" style="margin-top:-160px">
+        <div class="slider-item js-fullheight">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+              <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }" >
+                <h1 class="mb-3" data-scrollax="properties: {translateY: '30%', opacity: 1.6}" style="color: rgb(44, 43, 43);font-family:courier,arial,helvetica;">
+                  Ensembles de Lit</h1> 
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-item js-fullheight">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+              <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }" align='center'>
+                <img src="../static/logo/bambi_logo_dark.png" alt="" style="width: 300px;height: 150px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="row" align="center" style="justify-content: center;margin-top: -150px;" >
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/bamboo-komodin-7ec6.jpg" style='object-fit: cover;width: 500px;height: 450px;'>
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div>  
+
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/infinity-komodin-4f9d.jpg" >
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div>   
+
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/comfort-balance-set-6a6e.jpg">
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div>     
+
+        <div class="column productContainer">
+          <img class='resize_fit_center'src="https://www.bambi.com.tr/Uploads/UrunResimleri/thermic-prime-set-dbed1db5.jpg">
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div> 
+
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/viscolux-set-1a3d.jpg">
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div>   
+
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/freshcell-prime-set-2ce6.jpg">
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div>  
+
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/thermo-control-yatak-c4b3adac.jpg" >
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div>  
+
+        <div class="column productContainer">
+          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/visco-comfort-set-c64d.jpg" >
+          <div class='textContainer'>
+            <p style="text-align:left;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <span style="float:right;">
+                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+              </span>
+          </p>
+          </div>
+        </div> 
+      </div>
+
+      <footer class=" ftco-section" id="contact" style="margin-top: -100px;">
+        <div class="container">
+          <div class="row mb-5 justify-content-center" >
+            <div class="col-md-10 text-center" >
+              <div class="ftco-footer-widget mb-5" >
+                <a href="#contact"> <h3 class="bold-text" style="color: black;margin-left:10px ;font-family:courier,arial,helvetica;" >CONTACT US</h3></a>
+                <br/>
+                <ul class="ftco-footer-social list-unstyled">
+                  <li class="ftco-animate">
+                    <a class="nav-link"  target="_blank" href="https://www.facebook.com/pages/category/Furniture/Bambi-Literie-Meuble-699120597206137/" >
+                      <img src="../static/icons/facebook.png" style='width: 40px;height:40px;' alt="">
+                    </a>
+                  </li>
+                  <li class="ftco-animate" style="margin-left: 30px;">
+                    <a class="nav-link" target="_blank" href="https://www.instagram.com/bambiliterie/" >
+                      <img src="../static/icons/instagram.png" style='width: 45px;height:45px;' alt="">
+                    </a>
+                  </li>
+                  <li class="ftco-animate" style="margin-left: 30px;">
+                    <a class="nav-link" target="_blank" href="tel:+33762586432" >
+                      <img src="../static/icons/mobile.png" style='width: 48px;height:48px;' alt="">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="ftco-footer-widget">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.6430694072137!2d3.80046595005599!3d43.61397286288363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM2JzUwLjMiTiAzwrA0OCcwOS42IkU!5e0!3m2!1str!2sfr!4v1602622393758!5m2!1str!2sfr" width="70%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+
+              <p>Copyright ©2020 FreeWings Inc.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <div class="bottomNavbar" align='right'>
+        <a  href="#top" class="active" style="color: white;font-weight: 400;margin-right: 20px;text-decoration: underline;">Go Top</a>
+      </div>
+
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.easing.1.3.js"></script>
+    <script src="../static/js/jquery.waypoints.min.js"></script>
+    <script src="../static/js/jquery.stellar.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/aos.js"></script>
+    <script src="../static/js/jquery.animateNumber.min.js"></script>
+    <script src="../static/js/scrollax.min.js"></script>
+    <script src="../static/js/bootstrap-datepicker.js"></script>
+    <script src="../static/js/jquery.timepicker.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="../static/js/google-map.js"></script>
+    <script src="../static/js/main.js"></script>
+
+   <script>
+     $( ".imageSize" ).click(function() {
+      let name =this.name
+      if(name =='sm'){
+        $(".productContainer").css({"width": "300px", "height": "200px"});
+      }else if(name =='md'){
+        $(".productContainer").css({"width": "400px", "height": "300px"});
+      }else if(name =='lg'){
+        $(".productContainer").css({"width": "600px", "height": "400px"});
+      }
+    });
+   </script>
+    <style>
+        .navContainer{
+          background-color: rgba(255, 255, 255, 0.07);
+        }
+        .productContainer {
+          margin: 0 10px 50px 0;
+          margin-left: 10px;
+          width: 400px;
+          height: 300px;
+          text-align: center;
+          background-color: white;
+          box-shadow: 5px 5px 5px #aaaaaa;
+      
+      }.textContainer{
+        height: 40px;
+        margin-top: -40px;
+        background: rgba(255,255,255, 0.7);
+        position:relative;
+        width:100%;
+      }
+      .resize_fit_center {
+          max-width:97%;
+          max-height:97%;
+          vertical-align: middle;
+          margin-top: 10px;
+      }
+      .bottomNavbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      b{
+        color: rgb(61, 61, 61);
+        font-weight: 600;
+      }
+      </style>
+    
+  </body>
+</html>
