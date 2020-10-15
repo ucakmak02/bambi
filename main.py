@@ -89,8 +89,28 @@ def logout():
     flash('Çıkış yaptınız', 'danger')
     return redirect(url_for('home'))
 
-@app.route('/urunler/<product_name>', methods=['GET','POST'])
+@app.route('/produits/<product_name>', methods=['GET','POST'])
 def products(product_name):
+   if product_name == 'chambres': 
+      nameTitle='Chambres a Coucher'
+      product_name ='yatak'
+   elif product_name == 'salons': 
+      nameTitle='Salons'
+      product_name ='koltuk'
+   elif product_name == 'commode':
+      nameTitle='Commode'
+      product_name ='komidin'
+   elif product_name == 'linge':
+      nameTitle='Linge de Maison'
+      product_name ='tekstil' 
+   elif product_name == 'decoration':
+      nameTitle='Décoration'
+      product_name ='aksesuar'   
+   elif product_name == 'salle-a-manger':
+      nameTitle='Salle à Manger' 
+      product_name ='masa-sandalye'  
+
+
    cur = mysql.connection.cursor()
    cur.execute("SELECT * FROM products WHERE product_class= %s",[product_name])
    all_products =cur.fetchall()
