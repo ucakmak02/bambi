@@ -5,6 +5,8 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
+from config import mysql_data,product_list
+import random
 
 data_path = "./static/images"
 
@@ -12,6 +14,14 @@ app = Flask(__name__,static_folder="./static")
 
 app.secret_key ='3d6f45a5fc12445dbac2f59c3b6c7cb1'
 
+app.config['MYSQL_HOST'] = mysql_data["MYSQL_HOST"]
+app.config['MYSQL_USER'] = mysql_data["MYSQL_USER"]
+app.config['MYSQL_PASSWORD'] = mysql_data["MYSQL_PASSWORD"]
+app.config['MYSQL_DB'] = mysql_data["MYSQL_DATABASE"]
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['default_authentication_plugin']='sha2_password'
+
+mysql = MySQL(app)
 
 # Check if user logged in
 def is_logged_in(f):
@@ -28,7 +38,20 @@ def is_logged_in(f):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("index.html")
+   cur = mysql.connection.cursor()
+
+   cur.execute("SELECT * FROM products WHERE product_image = %s",['firstSlide.jpg'])
+   firstSlide =cur.fetchone()
+
+   print(firstSlide)
+
+   cur.execute("SELECT * FROM products WHERE product_image = %s",['secondSlide.jpg'])
+   secondSlide =cur.fetchone()
+
+   cur.execute("SELECT * FROM products WHERE product_image = %s",['thirdSlide.jpg'])
+   thirdSlide =cur.fetchone()
+   
+   return render_template("index.html",**locals())
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -68,7 +91,11 @@ def logout():
 
 @app.route('/urunler/<product_name>', methods=['GET','POST'])
 def products(product_name):
-   product_name = product_name
+   cur = mysql.connection.cursor()
+   cur.execute("SELECT * FROM products WHERE product_class= %s",[product_name])
+   all_products =cur.fetchall()
+   all_products = list(all_products)
+
    return render_template("products.html",**locals())
 
 
@@ -77,19 +104,48 @@ ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+@is_logged_in
 @app.route('/urun_ekle', methods=['GET','POST'])
 def urun_ekle():
+   cur = mysql.connection.cursor()
+   _product_list = product_list
    if request.method == 'POST':
-      aciklama = request.form['aciklama']
-      
+      image_key = random.randint(10, 100000000000000)
+      products_class = request.form['products_class']
+      slideNumber = request.form['slideNumber']
+      productTitle = request.form['productTitle']
+      productExpo = request.form['productExpo']
+      productName = request.form['productName']
+      productPrice = request.form['productPrice']
+
+      if products_class == 'main_page':
+         image_key = slideNumber
+         # Execute query
+         cur.execute('delete from products where product_image = %s', [str(image_key)+'.jpg'])
+         # Commit to DB
+         mysql.connection.commit()
+
+         # Execute query
+         cur.execute("INSERT INTO products (product_class, product_image,product_name,product_price,product_title,product_expo) VALUES (%s, %s,%s, %s,%s, %s)",(products_class, str(image_key)+'.jpg',productName,productPrice,productTitle,productExpo))
+         # Commit to DB
+         mysql.connection.commit()
+         # Close connection
+         cur.close()  
+      else:
+         # Execute query
+         cur.execute("INSERT INTO products (product_class, product_image,product_name,product_price,product_title,product_expo) VALUES (%s, %s,%s, %s,%s, %s)",(products_class, str(image_key)+'.jpg',productName,productPrice,productTitle,productExpo))
+         # Commit to DB
+         mysql.connection.commit()
+         # Close connection
+         cur.close()  
+
       files = request.files.getlist('files_main[]')
       for file in files:
          if file and allowed_file(file.filename):
-            filename = secure_filename(str(datetime.now())+"_date_"+file.filename)
+            filename = secure_filename(str(image_key)+'.jpg')
             print("filename:",filename)
             file.save(os.path.join(data_path, filename))
-   return render_template("add_product.html")
+   return render_template("add_product.html",**locals(),)
 
 @app.route('/satin_al/<product_id>', methods=['GET','POST'])
 def buy(product_id):
@@ -100,3 +156,4 @@ def buy(product_id):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
+

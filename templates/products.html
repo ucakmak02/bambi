@@ -114,103 +114,21 @@
           </div>
         </div>
       </section>
-
+      
       <div class="row" align="center" style="justify-content: center;margin-top: -150px;" >
+        {% for product in all_products %} 
         <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/bamboo-komodin-7ec6.jpg" style='object-fit: cover;width: 500px;height: 450px;'>
+          <img class='resize_fit_center' src="../static/images/{{product['product_image']}}" style='object-fit: cover;width: 500px;height: 450px;'>
           <div class='textContainer'>
             <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
+              <b class="textStyle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{product['product_name']}}</b>
               <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                <b class="textStyle">{{product['product_price']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
               </span>
           </p>
           </div>
         </div>  
-
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/infinity-komodin-4f9d.jpg" >
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div>   
-
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/comfort-balance-set-6a6e.jpg">
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div>     
-
-        <div class="column productContainer">
-          <img class='resize_fit_center'src="https://www.bambi.com.tr/Uploads/UrunResimleri/thermic-prime-set-dbed1db5.jpg">
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div> 
-
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/viscolux-set-1a3d.jpg">
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div>   
-
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/freshcell-prime-set-2ce6.jpg">
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div>  
-
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/thermo-control-yatak-c4b3adac.jpg" >
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div>  
-
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="https://www.bambi.com.tr/Uploads/UrunResimleri/visco-comfort-set-c64d.jpg" >
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urun Adı</b>
-              <span style="float:right;">
-                <b>Price:1200€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
-          </div>
-        </div> 
+        {% endfor %}
       </div>
 
       <footer class=" ftco-section" id="contact" style="margin-top: -100px;">
@@ -245,7 +163,6 @@
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
-
               <p>Copyright ©2020 FreeWings Inc.</p>
             </div>
           </div>
@@ -279,10 +196,14 @@
       let name =this.name
       if(name =='sm'){
         $(".productContainer").css({"width": "300px", "height": "200px"});
+        $(".textStyle").css({"fontSize": "15px"});
+        
       }else if(name =='md'){
         $(".productContainer").css({"width": "400px", "height": "300px"});
+        $(".textStyle").css({"fontSize": "20px"});
       }else if(name =='lg'){
         $(".productContainer").css({"width": "600px", "height": "400px"});
+        $(".textStyle").css({"fontSize": "25px"});
       }
     });
    </script>

@@ -4,7 +4,7 @@
   <!DOCTYPE html>
   <html lang="en">
     <head>
-      <title>Zazaoglu</title>
+      <title>Bambi</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="icon" type="image/gif/png" href="images/favicon.png">
@@ -37,60 +37,52 @@
       
     </head>
     <body>
-      <div class="overlayera">
-        <video id="myVideo" src="static/videos/Waves - 5121.mp4" autoplay="true" loop muted playsinline></video>
-        <img src="static/images/background.png" id="myResim" style="position: relative;">
-      </div>
-  
-      <div class="KW_progressContainer">
-        <div class="KW_progressBar">
-  
-        </div>
-      </div>
       <div class="page">
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" style="width:100%">
-          <button class="navbar-toggler btn btn-outline-info col-md-12" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" >
-            <span class="navbar-toggler-icon"></span>
-      
-          </button>
-          <div class="container" >
-            <div class="collapse navbar-collapse " id="navbarsExampleDefault">
-              <ul class="navbar-nav ml-auto" align="center">
-                
-                {% if session.logged_in %}
-                <li class="nav-item">
-                  <a class="nav-link" href="/logout">
-                      <i class="fas fa-sign-out-alt"></i> Çıkış
-                  </a>
-              </li>
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/" style="font-size:1.1em; color:white">
+          <img src="../static/logo/bambi_logo_light.png" style='width: 105px;' alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/" style="font-size:1.1em; color:white;margin-left: 20px;"><span class="sr-only">(current)</span>Home</a>
+            </li>
+
+            {% if session.logged_in %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout" style="font-size:1.1em; color:white;text-decoration: underline;">
+                  <i class="fas fa-sign-out-alt"></i> Cıkıs
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <span class="navbar-text">
+            <ul class="navbar-nav mr-auto">
+              {% if session.logged_in %}
+              <li class="nav-item">
+                <!-- Sayaclar.com Code Start  -->
+                <div align="center" style="margin-top: 10px;"><script language="Javascript" src="http://sa.sayaclar.com/c/s4.php?a=4bxmkfq&s=1a8"></script></div>
+                <!-- Sayaclar.com Code End -->              </li>
               {% endif %}
-              </ul>
-            </div>
-          </div>
-        </nav>
+            </ul>
+          </span>
+        </div>
+      </nav>
       
-      
+      {% if session.logged_in %}
       <div id="colorlib-page">
-        <header>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="colorlib-navbar-brand">
-                  <a class="colorlib-logo" href="/"><span class="logo-img" style="background-image: url(static/images/ceyiz_logo.jpg);"></span><p style="color:#ff6666">ZAZAOĞLU ÇEYİZ</p></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
 
         <section class="ftco-section about-section" id="about">
         
-          <div class="container">
+          <div class="container" style="margin-top: -130px;">
                 <form id="upload-form" method="POST" action="/urun_ekle" enctype="multipart/form-data" novalidate="" accept="images/*">
             <h1 class="bold-text">Ürün Ekleme</h1>
             <div class="row d-flex" data-scrollax-parent="true">
               <div class="col-md-3 author-img" data-scrollax=" properties: { translateY: '-70%'}" align="center">
-                <h2 class="bold-text">Ürün Ana Fotoğraf Ekle</h2>
+                <h2 class="bold-text">Ürün Fotoğrafı</h2>
                 
                 <div class="box has-advanced-upload">
                         <input id="action" type="text" value="add" class="form-control d-none" name="action">
@@ -126,40 +118,62 @@
                 <div class="about-desc">
                   
                   <div class="p-5">
-                    
-
-                    
                         <h2 class="bold-text">Ürün Bilgileri</h2>
                         <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroup-sizing-default">Ürün Adı  :</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                          <div class="input-group-prepend">
+                            <span style='width: 150px;' class="input-group-text" id="inputGroup-sizing-default">Alanı Seçiniz:</span>
+                          </div>
+                          <select required="required" aria-required="true" id='productArea' style="width:150px;" name="products_class"
+                          class="selectpicker form-control custom-form-control">
+                            <option value="main_page">Ana Sayfa Fotoğrafı</option>
+                            {% for product in _product_list %} 
+                              <option value="{{product}}">{{product|replace("_", " ")| capitalize}}</option>
+                            {% endfor %}
+                          </select>
                         </div>
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroup-sizing-default" >Ürün Modeli:</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Default" style="color: black" aria-describedby="inputGroup-sizing-default">
+                        <!-- Ana Ekran Alanı -->
+                        <div class="input-group mb-3 mainInfos">
+                          <div class="input-group-prepend">
+                            <span style='width: 150px;'class="input-group-text" id="inputGroup-sizing-default" >Slayt Seçiniz:</span>
+                          </div>
+                          <select required="required" aria-required="true" style="width:150px;" name="slideNumber"
+                                class="selectpicker form-control custom-form-control">
+                                  <option value="firstSlide">1. Slayt</option>
+                                  <option value="secondSlide">2. Slayt</option>
+                                  <option value="thirdSlide">3. Slayt</option>
+                          </select>
                         </div>
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroup-sizing-default">Ürün Rengi:</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+
+                        <div class="input-group mb-3 mainInfos">
+                          <div class="input-group-prepend">
+                            <span style='width: 150px;' class="input-group-text">Başlık:</span>
+                          </div>
+                          <input type="text" class="form-control" name='productTitle' aria-label="Default" style="color: black" aria-describedby="inputGroup-sizing-default">
                         </div>
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroup-sizing-default">Ürün Fiyatı:</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        
+                        <div class="input-group mb-3 mainInfos">
+                          <div class="input-group-prepend">
+                            <span style='width: 150px;' class="input-group-text">Açıklama:</span>
+                          </div>
+                          <textarea class="form-control" name="productExpo" aria-label="With textarea"></textarea>
                         </div>
-                        <div class="input-group">
+                        <!-- ****************** -->
+                        
+                        <div class="input-group mb-3 productInfos" >
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text">Açıklama   :</span>
+                                  <span style='width: 150px;'class="input-group-text" id="inputGroup-sizing-default" >Ürün İsmi:</span>
                                 </div>
-                                <textarea class="form-control" name="aciklama" aria-label="With textarea"></textarea>
+                                <input type="text" class="form-control" name="productName" aria-label="Default" style="color: black" aria-describedby="inputGroup-sizing-default">
                         </div>
+                        
+                        <div class="input-group mb-3 productInfos" >
+                                <div class="input-group-prepend">
+                                  <span style='width: 150px;' class="input-group-text" id="inputGroup-sizing-default">Ürün Fiyatı:</span>
+                                </div>
+                                <input type="text" class="form-control" name="productPrice" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+
+                        
                         
           
                     
@@ -172,70 +186,12 @@
               </div>
             </div>
           <div align="center">
-          <h2 class="bold-text">Ürünün Diğer Fotoğraflarını Ekle</h2>
-                
-          <div class="box has-advanced-upload">
-                  <input id="action" type="text" value="add" class="form-control d-none" name="action">
-                  <div class="box__input">
-                      <p for="fileLater" id="upload-cloud" style="font-size: 100px;" class="text-center">
-                          <i class="fas fa-cloud-upload-alt text-primary"></i>
-                      </p>
-                      <div id="upload-highstone" class="row justify-content-center" style="display: none;">
-                          <div class="col-4"></div>
-                          <div class="col-4"></div>
-                          <div class="progress col-6 mt-3 p-0">
-                              <div class="upload-bar text-center">
-                                  <strong class="upload-percent" style="font-size: 10px;">0%</strong>
-                              </div>
-
-                          </div>
-                      </div>
-                      <input type="file" name="files[]" accept='image/*' id="fileLater" class="box__file d-none" data-multiple-caption="{count} files selected" multiple="">
-                      <label for="fileLater" class="col-12 text-center" style="cursor: pointer;">
-
-                          <strong>Resimleri Seçin</strong>
-                          <span class="box__dragndrop"> yada buraya sürükleyip bırakın</span>.
-                      </label>
-
-                  </div>
-                  <div class="box__uploading">Yükleniyor...</div>
-                  <div class="box__success">Yüklendi! </div>
-                  <div class="box__error">Hata! <span></span></div>
-              </div>
-            </div>
-        </div>
-        <div style="height: 40px"></div>
         <button style="width: 200px; margin:0 auto;" class="btn btn-primary btn-block" type="submit" value="Save">Kaydet</button>
 
         </form>
     </div>
         </section>
     
-        <footer class=" ftco-section" id="contact">
-          <div class="container">
-            <div class="row mb-5 justify-content-center">
-              <div class="col-md-10 text-center">
-                <div class="ftco-footer-widget mb-5">
-                  <ul class="ftco-footer-social list-unstyled">
-                    <li class="ftco-animate"><a target="_blank" href="https://twitter.com/HighStone8"><span class="icon-twitter"></span></a></li>
-                    <li class="ftco-animate"><a target="_blank" href="https://www.facebook.com/highstone.highstone.77"><span class="icon-facebook"></span></a></li>
-                    <li class="ftco-animate"><a target="_blank" href="https://www.instagram.com/highstonecorp/?hl=tr"><span class="icon-instagram"></span></a></li>
-                  </ul>
-                </div>
-                <div class="ftco-footer-widget">
-                  <h2 class="mb-3">İletişim</h2>
-                  <p class="h3 email"><a href="contact.html">zazaogluceyiz@gmail.com</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 text-center">
-  
-                <p>Copyright ©2019 FreeWings Inc.</p>
-              </div>
-            </div>
-          </div>
-        </footer>
   
         <!-- loader -->
         <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -243,6 +199,7 @@
         </div>
   
       </div>
+      {% endif %}
   
   
       <script src="static/js/jquery.min.js"></script>
@@ -291,8 +248,24 @@
           background-color: rgba(255, 255, 255, 0.07);
         }
       </style>
-      <script>
-(function(document, window, index) {
+<script>
+      $( document ).ready(function() {
+        $(".productInfos").hide();
+        $(".mainInfos").show();
+      });
+
+    $( "#productArea" ).change(function() {
+      let product = $('#productArea').val();
+      
+      if (product =='main_page'){
+        $(".productInfos").hide();
+        $(".mainInfos").show();
+      }else{
+        $(".mainInfos").hide();
+        $(".productInfos").show();
+      }
+    });
+  (function(document, window, index) {
     // feature detection for drag&drop upload
     var isAdvancedUpload = function() {
         var div = document.createElement('div');
