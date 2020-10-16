@@ -40,15 +40,13 @@ def is_logged_in(f):
 def home():
    cur = mysql.connection.cursor()
 
-   cur.execute("SELECT * FROM products WHERE product_image = %s",['firstSlide.jpg'])
+   cur.execute("SELECT * FROM products WHERE product_name = %s",['firstSlide'])
    firstSlide =cur.fetchone()
 
-   print(firstSlide)
-
-   cur.execute("SELECT * FROM products WHERE product_image = %s",['secondSlide.jpg'])
+   cur.execute("SELECT * FROM products WHERE product_name = %s",['secondSlide'])
    secondSlide =cur.fetchone()
 
-   cur.execute("SELECT * FROM products WHERE product_image = %s",['thirdSlide.jpg'])
+   cur.execute("SELECT * FROM products WHERE product_name = %s",['thirdSlide'])
    thirdSlide =cur.fetchone()
    
    return render_template("index.html",**locals())
@@ -139,17 +137,12 @@ def urun_ekle():
       productPrice = request.form['productPrice']
 
       if products_class == 'main_page':
-         image_key = slideNumber
          # Execute query
-         cur.execute('delete from products where product_image = %s', [str(image_key)+'.jpg'])
-         # Commit to DB
+         cur.execute('delete from products where product_name = %s', [slideNumber])
          mysql.connection.commit()
-
          # Execute query
-         cur.execute("INSERT INTO products (product_class, product_image,product_name,product_price,product_title,product_expo) VALUES (%s, %s,%s, %s,%s, %s)",(products_class, str(image_key)+'.jpg',productName,productPrice,productTitle,productExpo))
-         # Commit to DB
+         cur.execute("INSERT INTO products (product_class, product_image,product_name,product_price,product_title,product_expo) VALUES (%s, %s,%s, %s,%s, %s)",(products_class, str(image_key)+'.jpg',slideNumber,productPrice,productTitle,productExpo))
          mysql.connection.commit()
-         # Close connection
          cur.close()  
       else:
          # Execute query
@@ -167,12 +160,35 @@ def urun_ekle():
             file.save(os.path.join(data_path, filename))
    return render_template("add_product.html",**locals(),)
 
-@app.route('/satin_al/<product_id>', methods=['GET','POST'])
-def buy(product_id):
-   product_id = product_id
+@app.route('/save_changes', methods=['GET','POST'])
+def save_changes():
+   cur = mysql.connection.cursor()
+   if request.method == 'POST':
+      _id= request.form['id']
+      _name= request.form['name']
+      _price= request.form['price']
+      print(_id,_name,_price)
+      cur.execute("UPDATE products SET product_name=%s,product_price=%s  WHERE id= %s",[_name,_price,_id])
+      # Commit to DB
+      mysql.connection.commit()
+      # Close connection
+      cur.close() 
    return render_template("buy.html",**locals())
 
-
+@app.route('/delete_product', methods=['GET','POST'])
+def delete_product():
+   cur = mysql.connection.cursor()
+   if request.method == 'POST':
+      _id= request.form['id']
+      image_path = request.form['image_path']
+      
+      cur.execute('delete from products where product_image = %s', [image_path])
+      # Commit to DB
+      mysql.connection.commit() 
+      # Close connection
+      cur.close()
+      os.remove('./static/images' + '/' + image_path)
+   return render_template("buy.html",**locals())
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

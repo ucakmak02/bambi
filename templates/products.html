@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../static/css/flaticon.css">
     <link rel="stylesheet" href="../static/css/icomoon.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body style="background-color: whitesmoke;">
     <div class="page">  
@@ -39,17 +40,35 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/" style="font-size:1.1em; color:white;margin-left: 20px;"><span class="sr-only">(current)</span>Home</a>
+              <a class="nav-link" href="/" style="font-size:1em; color:white;"><span class="sr-only">(current)</span>Accueil</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#products" style="font-size:1.1em; color:white;margin-left: 20px;">Products</a>
+              <a class="nav-link" href="#contact" style="font-size:1em; color:white;">Contact</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#contact" style="font-size:1.1em; color:white;margin-left: 20px;">Contact</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-decoration: underline;color: white;">
+                Produits
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link" href="/produits/chambres" style="font-size:1em; color:black;margin-left: 20px;">Chambres</a>
+                <a class="nav-link" href="/produits/salons" style="font-size:1em; color:black;margin-left: 20px;">Salons</a>
+                <a class="nav-link" href="/produits/commode" style="font-size:1em; color:black;margin-left: 20px;">Commode</a>
+                <a class="nav-link" href="/produits/linge" style="font-size:1em; color:black;margin-left: 20px;">Linge de Maison</a>
+                <a class="nav-link" href="/produits/decoration" style="font-size:1em; color:black;margin-left: 20px;">Décoration</a>
+                <a class="nav-link" href="/produits/salle-a-manger" style="font-size:1em; color:black;margin-left: 20px;">Salle à Manger</a>
+                <div class="dropdown-divider"></div>
+                <a class="nav-link" href="/" style="font-size:0.9em; color:black;margin-left: 20px;"><span class="sr-only">(current)</span>Accueil</a>
+              </div>
             </li>
             {% if session.logged_in %}
             <li class="nav-item">
-              <a class="nav-link" href="/logout" style="font-size:1.1em; color:white">
+              <a class="nav-link" href="/urun_ekle" style="font-size:1em; color:white;text-decoration: underline;">
+                  <i class="fas fa-sign-out-alt"></i> Urun Ekle
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout" style="font-size:1em; color:white;margin-left: 10px;text-decoration: underline;">
                   <i class="fas fa-sign-out-alt"></i> Cıkıs
               </a>
             </li>
@@ -66,37 +85,33 @@
               </li>
               
               <li class="nav-item active">
-                <a class="nav-link"  target="_blank" href="https://www.facebook.com/pages/category/Furniture/Bambi-Literie-Meuble-699120597206137/" >
-                  <img src="../static/icons/facebook.png" style='width: 25px;height:25px;margin-left: 15px;' alt="">
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" target="_blank" href="https://www.instagram.com/bambiliterie/" >
-                  <img src="../static/icons/instagram.png" style='width: 27px;height:27px;margin-left: 15px;' alt="">
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" target="_blank" href="tel:+33762586432" >
-                  <img src="../static/icons/mobile.png" style='width: 27px;height:27px;margin-left: 15px;' alt="">
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="https://goo.gl/maps/Z9SHekveQZ6Pqa33A" target="_blank">
-                  <img src="../static/icons/location.jpg" style='width: 32px;height:27px;margin-left: 15px;' alt="">
-                </a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a class="nav-link"  target="_blank" href="https://www.facebook.com/pages/category/Furniture/Bambi-Literie-Meuble-699120597206137/" >
+                    <img src="../static/icons/facebook.png" style='width: 25px;height:25px;margin-left: 5px;' alt="">
+                  </a>
+                  <a class="nav-link" target="_blank" href="https://www.instagram.com/bambiliterie/" >
+                    <img src="../static/icons/instagram.png" style='width: 27px;height:27px;margin-left: 5px;' alt="">
+                  </a>
+                  <a class="nav-link" target="_blank" href="tel:+33762586432" >
+                    <img src="../static/icons/mobile.png" style='width: 27px;height:27px;margin-left: 5px;' alt="">
+                  </a>
+                  <a class="nav-link" href="https://goo.gl/maps/Z9SHekveQZ6Pqa33A" target="_blank">
+                    <img src="../static/icons/location.jpg" style='width: 32px;height:27px;margin-left: 0px;' alt="">
+                  </a>
+                </div>              
               </li>
             </ul>
           </span>
         </div>
       </nav>
 
-      <section class="home-slider owl-carousel js-fullheight" id ="start" style="margin-top:-160px">
+      <section class="home-slider owl-carousel js-fullheight" id ="start" style="margin-top:-160px;z-index: -1;position:relative">
         <div class="slider-item js-fullheight">
           <div class="overlay"></div>
           <div class="container">
             <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
               <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }" >
-                <h1 class="mb-3" data-scrollax="properties: {translateY: '30%', opacity: 1.6}" style="color: rgb(44, 43, 43);font-family:courier,arial,helvetica;">
+                <h1 class="mb-3" data-scrollax="properties: {translateY: '30%', opacity: 1.6}" style="color: rgb(32, 32, 32);font-family:courier,arial,helvetica;">
                   {{nameTitle}}</h1> 
               </div>
             </div>
@@ -114,24 +129,63 @@
           </div>
         </div>
       </section>
-      
-      <div class="row" align="center" style="justify-content: center;margin-top: -150px;" >
+
+      <div class="row" align="center" style="justify-content: center;margin-top: -150px;"  >
         {% for product in all_products %} 
-        <div class="column productContainer">
-          <img class='resize_fit_center' src="../static/images/{{product['product_image']}}" style='object-fit: cover;width: 500px;height: 450px;'>
-          <div class='textContainer'>
-            <p style="text-align:left;">
-              <b class="textStyle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{product['product_name']}}</b>
-              <span style="float:right;">
-                <b class="textStyle">{{product['product_price']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-              </span>
-          </p>
+        
+        <div class="column productContainer" id="productDiv{{product['id']}}">
+          
+            <img onclick="openModal(this)" class='resize_fit_center' image_path="../static/images/{{product['product_image']}}" src="../static/images/{{product['product_image']}}" style='object-fit: cover;'>
+      
+            <div class='textContainer'>
+              <p style="text-align:left;;margin-left: 5px;">
+                <b id ="productTitle{{product['id']}}" class="textStyle">{{product['product_name']}}</b>
+                <span style="float:right;margin-right: 5px;">
+                  <b id ="productPrice{{product['id']}}" class="textStyle">{{product['product_price']}}</b>
+                </span>
+            </p>
+          
+          {% if session.logged_in %}
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-6">
+              <input class="inputChange" type="text" placeholder="Ürün İsmi" id="productNameText{{product['id']}}" value="{{product['product_name']}}" style="border-radius: 5px;height: 30px;width: 175px;">
+            </div>
+            <div class="col-sm-6">
+              <input class="inputChange"  type="text" placeholder="Ürün Fiyatı" id="productPriceText{{product['id']}}" value="{{product['product_price']}}" style="border-radius: 5px;height: 30px;width: 175px;">
+            </div>
+        </div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-6">
+              <buttons onclick="saveChanges(this)" class="btn btn-success" name="{{product['id']}}" type="button" style='border-radius: 5px;' >
+                <i class="fa fa-save" aria-hidden="true"> Kaydet</i>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button onclick="deleteProduct(this)" class="btn btn-danger" name="{{product['id']}}" image_path="{{product['product_image']}}" data-toggle="modal"  type="submit" style='border-radius: 5px;'>
+                <i class="fa fa-trash" aria-hidden="true"> Ürünü Sil</i>
+              </button>  
+            </div>
           </div>
-        </div>  
+          {% endif %}
+        </div>
+        
+          </div>
+          
         {% endfor %}
       </div>
 
-      <footer class=" ftco-section" id="contact" style="margin-top: -100px;">
+     <!-- Modal -->
+     <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content" >
+          <img id='modalDivImage' src="" alt="" style="width: 200%;margin-left: -50%;overflow-x: auto;" >
+        </div>
+      </div>
+    </div>
+    
+
+
+      <footer class=" ftco-section" id="contact" style="margin-top: -50px;">
         <div class="container">
           <div class="row mb-5 justify-content-center" >
             <div class="col-md-10 text-center" >
@@ -170,7 +224,9 @@
         </div>
       </footer>
       <div class="bottomNavbar" align='right'>
-        <a  href="#top" class="active" style="color: white;font-weight: 400;margin-right: 20px;text-decoration: underline;">Go Top</a>
+        <a  href="#top" class="active" style="color: white;font-weight: 600;margin-right: 20px;text-decoration: underline;">
+          <img src="/static/icons/up-arrow.png" style="width: 40px;height: 40px;margin: 2px;" alt="">
+        </a>
       </div>
 
 
@@ -193,20 +249,71 @@
     <script src="../static/js/main.js"></script>
 
    <script>
+     $( document ).ready(function() {
+          if({{session.logged_in|default("")| tojson}}){
+            $(".productContainer").css({"margin-top": "150px"});
+          } 
+      });
+      function openModal(elem) {
+        image_path = elem.getAttribute("image_path")
+        $("#modalDivImage").attr("src",image_path);
+        $('#exampleModal').modal('show');
+      }
+      
+        
      $( ".imageSize" ).click(function() {
       let name =this.name
       if(name =='sm'){
         $(".productContainer").css({"width": "300px", "height": "200px"});
+        $(".inputChange").css({"width": "125px", "height": "25px"});
         $(".textStyle").css({"fontSize": "15px"});
         
       }else if(name =='md'){
-        $(".productContainer").css({"width": "400px", "height": "300px"});
+        $(".productContainer").css({"width": "400px", "height": "250px"});
+        $(".inputChange").css({"width": "175px", "height": "30px"});
         $(".textStyle").css({"fontSize": "20px"});
       }else if(name =='lg'){
-        $(".productContainer").css({"width": "600px", "height": "400px"});
+        $(".productContainer").css({"width": "530px", "height": "350px"});
+        $(".inputChange").css({"width": "225px", "height": "35px"});
         $(".textStyle").css({"fontSize": "25px"});
       }
     });
+  function saveChanges(elem) {
+    id = elem.getAttribute("name")
+    productNameText = $('#productNameText'+id).val()
+    productPriceText = $('#productPriceText'+id).val()
+      req = $.ajax({
+        url: '/save_changes',
+        type: 'POST',
+        data: { id: id ,name:productNameText,price:productPriceText}
+
+      });
+      req.done(function () {
+        var tr = $('#productDiv'+id)
+        tr.fadeOut(700, function () {
+          tr.fadeIn(700)
+        })
+        $( "#productTitle"+id ).text(productNameText)
+        $( "#productPrice"+id ).text(productPriceText)
+      })
+  }
+
+  function deleteProduct(elem) {
+    id = elem.getAttribute("name")
+    image_path = elem.getAttribute("image_path")
+    
+      req = $.ajax({
+        url: '/delete_product',
+        type: 'POST',
+        data: { id: id,image_path:image_path}
+      });
+      req.done(function () {
+        var tr = $('#productDiv'+id)
+        tr.fadeOut(700, function () {
+          
+        })
+      })
+  }
    </script>
     <style>
         .navContainer{
@@ -216,7 +323,7 @@
           margin: 0 10px 50px 0;
           margin-left: 10px;
           width: 400px;
-          height: 300px;
+          height: 250px;
           text-align: center;
           background-color: white;
           box-shadow: 5px 5px 5px #aaaaaa;
@@ -236,7 +343,6 @@
       }
       .bottomNavbar {
         overflow: hidden;
-        background-color: #333;
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -244,6 +350,7 @@
       b{
         color: rgb(61, 61, 61);
         font-weight: 600;
+        font-family:courier,arial,helvetica;
       }
       </style>
     

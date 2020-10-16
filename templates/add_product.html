@@ -61,12 +61,6 @@
           </ul>
           <span class="navbar-text">
             <ul class="navbar-nav mr-auto">
-              {% if session.logged_in %}
-              <li class="nav-item">
-                <!-- Sayaclar.com Code Start  -->
-                <div align="center" style="margin-top: 10px;"><script language="Javascript" src="http://sa.sayaclar.com/c/s4.php?a=4bxmkfq&s=1a8"></script></div>
-                <!-- Sayaclar.com Code End -->              </li>
-              {% endif %}
             </ul>
           </span>
         </div>
@@ -125,10 +119,11 @@
                           </div>
                           <select required="required" aria-required="true" id='productArea' style="width:150px;" name="products_class"
                           class="selectpicker form-control custom-form-control">
-                            <option value="main_page">Ana Sayfa Fotoğrafı</option>
+                            
                             {% for product in _product_list %} 
                               <option value="{{product}}">{{product|replace("_", " ")| capitalize}}</option>
                             {% endfor %}
+                            <option value="main_page">Ana Sayfa Fotoğrafı</option>
                           </select>
                         </div>
                         <!-- Ana Ekran Alanı -->
@@ -171,16 +166,9 @@
                                   <span style='width: 150px;' class="input-group-text" id="inputGroup-sizing-default">Ürün Fiyatı:</span>
                                 </div>
                                 <input type="text" class="form-control" name="productPrice" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                        </div>
+                        </div>      
+                </div>
 
-                        
-                        
-          
-                    
-                </div>
-                <div align="center">
-                    <div style="width: 33%">{% include 'includes/_messages.html' %}</div>
-                </div>
 
                 </div>
               </div>
@@ -250,8 +238,8 @@
       </style>
 <script>
       $( document ).ready(function() {
-        $(".productInfos").hide();
-        $(".mainInfos").show();
+        $(".productInfos").show();
+        $(".mainInfos").hide();
       });
 
     $( "#productArea" ).change(function() {
