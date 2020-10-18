@@ -48,7 +48,7 @@ def home():
 
    cur.execute("SELECT * FROM products WHERE product_name = %s",['thirdSlide'])
    thirdSlide =cur.fetchone()
-   
+
    return render_template("index.html",**locals())
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -59,7 +59,7 @@ def admin():
       global username
       username = request.form['username']
       password_candidate = request.form['password']
-      
+
 
       # Compare Passwords
       if password_candidate == "admin" and username == "admin":
@@ -89,10 +89,10 @@ def logout():
 
 @app.route('/produits/<product_name>', methods=['GET','POST'])
 def products(product_name):
-   if product_name == 'chambres': 
+   if product_name == 'chambres':
       nameTitle='Chambres a Coucher'
       product_name ='yatak'
-   elif product_name == 'salons': 
+   elif product_name == 'salons':
       nameTitle='Salons'
       product_name ='koltuk'
    elif product_name == 'commode':
@@ -100,13 +100,13 @@ def products(product_name):
       product_name ='komidin'
    elif product_name == 'linge':
       nameTitle='Linge de Maison'
-      product_name ='tekstil' 
+      product_name ='tekstil'
    elif product_name == 'decoration':
       nameTitle='Décoration'
-      product_name ='aksesuar'   
+      product_name ='aksesuar'
    elif product_name == 'salle-a-manger':
-      nameTitle='Salle à Manger' 
-      product_name ='masa-sandalye'  
+      nameTitle='Salle à Manger'
+      product_name ='masa-sandalye'
 
 
    cur = mysql.connection.cursor()
@@ -143,14 +143,14 @@ def urun_ekle():
          # Execute query
          cur.execute("INSERT INTO products (product_class, product_image,product_name,product_price,product_title,product_expo) VALUES (%s, %s,%s, %s,%s, %s)",(products_class, str(image_key)+'.jpg',slideNumber,productPrice,productTitle,productExpo))
          mysql.connection.commit()
-         cur.close()  
+         cur.close()
       else:
          # Execute query
          cur.execute("INSERT INTO products (product_class, product_image,product_name,product_price,product_title,product_expo) VALUES (%s, %s,%s, %s,%s, %s)",(products_class, str(image_key)+'.jpg',productName,productPrice,productTitle,productExpo))
          # Commit to DB
          mysql.connection.commit()
          # Close connection
-         cur.close()  
+         cur.close()
 
       files = request.files.getlist('files_main[]')
       for file in files:
@@ -172,7 +172,7 @@ def save_changes():
       # Commit to DB
       mysql.connection.commit()
       # Close connection
-      cur.close() 
+      cur.close()
    return render_template("buy.html",**locals())
 
 @app.route('/delete_product', methods=['GET','POST'])
@@ -181,10 +181,10 @@ def delete_product():
    if request.method == 'POST':
       _id= request.form['id']
       image_path = request.form['image_path']
-      
+
       cur.execute('delete from products where product_image = %s', [image_path])
       # Commit to DB
-      mysql.connection.commit() 
+      mysql.connection.commit()
       # Close connection
       cur.close()
       os.remove('./static/images' + '/' + image_path)

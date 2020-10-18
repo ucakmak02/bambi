@@ -1,0 +1,22 @@
+version: "3"
+services:
+  bambi:
+    container_name: bambi
+    build:
+      context: ./
+      dockerfile: deployments/app/prod.Dockerfile
+    ports:
+      - 8880:8880
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: bambi
+      MYSQL_DATABASE: bambi
+      MYSQL_USER: bambi
+      MYSQL_PASSWORD: bambi
+volumes:
+  db_data: {}
