@@ -5,7 +5,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
-from config import mysql_data,product_list
+from config import mysql_data,product_list,admin_username,admin_password
 import random
 
 data_path = "./static/images"
@@ -39,7 +39,6 @@ def is_logged_in(f):
 @app.route('/', methods=['GET', 'POST'])
 def home():
    cur = mysql.connection.cursor()
-
    cur.execute("SELECT * FROM products WHERE product_name = %s",['firstSlide'])
    firstSlide =cur.fetchone()
 
@@ -62,7 +61,7 @@ def admin():
 
 
       # Compare Passwords
-      if password_candidate == "admin" and username == "admin":
+      if password_candidate == admin_password and username == admin_username:
       #if check_password_hash(password_candidate, password):
             # Passed
             session['logged_in'] = True
